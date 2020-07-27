@@ -1,0 +1,54 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <% for(let action of data) { %>
+                    <div class="card">
+                        <div class="card-block">
+                            <% if(action.security_name) { %> 
+                                <h4 class="card-title"><%= action.security_name %></h4>
+                            <% } %>
+                            <% if(action.company_name) { %> 
+                                <h4 class="card-title"><%= action.company_name %></h4>
+                            <% } %>
+                            <h6 class="card-subtitle text-muted"><%= action.security_code %></h6>
+                            <% if(action.symbol) { %> 
+                                <h6 class="card-subtitle text-muted"><%= action.symbol %></h6>
+                            <% } %>
+                            <% if(action.anouncement) { %> 
+                                <h6 class="card-subtitle text-muted"><span class="pr-2">Announcement:</span><%= action.anouncement %></h6>
+                            <% } %>
+                            <% if(action.purpose) { %> 
+                                <p class="card-text p-y-1"><span class="text-muted pr-2">Purpose:</span><%= action.purpose %></p>
+                            <% } %>
+                            <% if(action.bc_start_date) { %> 
+                                <p class='card-text p-y-1'><i class="fa fa-calendar pr-2" aria-hidden="true"></i><span class="card-subtitle text-muted pr-1">BC_Start_Date:</span><%= action.bc_start_date %></p>
+                            <% } %>
+                            <% if(action.bc_end_date) { %> 
+                                <p class='card-text p-y-1'><i class="fa fa-calendar pr-2" aria-hidden="true"></i><span class="card-subtitle text-muted pr-1">BC_End_Date:</span><%= action.bc_end_date %></p>
+                            <% } %>
+                            <% if(action.nd_start_date) { %> 
+                                <p class='card-text p-y-1'><i class="fa fa-calendar pr-2" aria-hidden="true"></i><span class="card-subtitle text-muted pr-1">ND_Start_Date:</span><%= action.nd_start_date %></p>
+                            <% } %>
+                            <% if(action.nd_end_date) { %> 
+                                <p class='card-text p-y-1'><i class="fa fa-calendar pr-2" aria-hidden="true"></i><span class="card-subtitle text-muted pr-1">ND_End_Date:</span><%= action.nd_end_date %></p>
+                            <% } %> 
+                            <% if(action.ex_date) { %> 
+                                <p class='card-text p-y-1'><i class="fa fa-calendar pr-2" aria-hidden="true"></i><span class="card-subtitle text-muted pr-1">EX_Date:</span><%= action.ex_date %></p>
+                            <% } %>   
+                            <% if(action.record_date) { %> 
+                                <p class='card-text p-y-1'><i class="fa fa-calendar pr-2" aria-hidden="true"></i><span class="card-subtitle text-muted pr-1">Record_Date:</span><%= action.record_date %></p>
+                            <% } %>             
+                        </div>
+                    </div> 
+                <% } %>
+            </div>
+        </div>
+        <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
+    </div>
+    <script src="/js/navigation.js"></script>
+<%- include('../includes/end.ejs') %></body>
